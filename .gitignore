@@ -1,0 +1,15 @@
+# NetBeans specific files #
+**/nbproject/private/
+**/nbproject/Makefile-*.mk
+**/nbproject/Package-*.bash
+build/
+nbbuild/
+dist/
+.nb-gradle/
+nbactions.xml
+
+# Class and Package files created after compilation #
+*.class
+*.jar
+*.war
+*.ear
