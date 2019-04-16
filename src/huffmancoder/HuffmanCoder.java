@@ -12,6 +12,8 @@ package huffmancoder;
 import java.io.File;
 import java.nio.file.Paths;
 import java.nio.file.Path;
+import huffmantree.nodes.HuffmanTree;
+import data.extraction.DataExtract;
 
 public class HuffmanCoder {
 
@@ -23,21 +25,21 @@ public class HuffmanCoder {
         for (String arg : args) {
             System.out.println(arg);
         }
-        Path currPath = Paths.get("");
-        String currDirectory = currPath.toAbsolutePath().toString();
-        System.out.println("Current path is " + currDirectory);
-        
+
         try {
             File inputFile = new File(args[0]);
-            if (inputFile.exists()) {
-                System.out.println(args[0]);
-            } else {
-                System.out.println("File not found");
-            }
             
+            if (inputFile.isFile() && inputFile.canRead()) {
+                byte[] dataBytes = DataExtract.parseDataBytes(inputFile);
+                char[] dataChars = DataExtract.parseDataChars(inputFile);
+            } else {
+                throw new Exception();
+            }
+
         } catch (Exception e) {
+            System.out.println("Provided path to file or file name is incorrect");
             System.out.println(e);
         }
     }
-    
+
 }
